@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Libros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Buscador de Libros</h1>
+    <form id="formularioLibros">
+        <label for="idBusqueda">ID de búsqueda:</label>
+        <input type="text" id="idBusqueda" name="idBusqueda"><br><br>
+        <label for="campo1">Campo 1:</label>
+        <input type="text" id="campo1" name="campo1" readonly><br><br>
+        <label for="campo2">Campo 2:</label>
+        <input type="text" id="campo2" name="campo2" readonly><br><br>
+        <label for="campo3">Campo 3:</label>
+        <input type="text" id="campo3" name="campo3" readonly><br><br>
+        <label for="campo4">Campo 4:</label>
+        <input type="text" id="campo4" name="campo4" readonly><br><br>
+        <button type="button" onclick="consultar()">Consultar</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
