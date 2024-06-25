@@ -26,9 +26,13 @@ Fetch API
 **Instalación**
 
 Clona este repositorio en tu máquina local:
+
 git clone https://github.com/LordPuposky/buscador-libros-2.git
+
 Navega hasta el directorio del proyecto:
+
 cd buscador-de-libros
+
 Abre el archivo index.html en tu navegador web.
 
 **Uso**
@@ -90,9 +94,13 @@ Fetch API
 **Installation**
 
 Clone this repository to your local machine:
+
 git clone https://github.com/LordPuposky/buscador-libros-2.git
+
 Navigate to the project directory:
+
 cd book-finder
+
 Open the index.html file in your web browser.
 
 **Usage**
