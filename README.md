@@ -19,8 +19,11 @@ La aplicación permite gestionar comentarios a través de una interfaz web simpl
 **Tecnologías Utilizadas**
 
 HTML
+
 CSS
+
 JavaScript
+
 Fetch API
 
 **Instalación**
@@ -54,12 +57,17 @@ Eliminar (Delete): Envía una solicitud DELETE a la API para eliminar un comenta
 **Estructura del Proyecto**
 
 buscador-de-libros/
+
 ├── index.html
+
 ├── styles.css
+
 └── script.js
 
 index.html: Contiene la estructura HTML de la aplicación.
+
 styles.css: Contiene los estilos CSS para la apariencia de la aplicación.
+
 script.js: Contiene el código JavaScript para las funciones CRUD y la interacción con la API.
 
 **API de Ejemplo**
@@ -87,8 +95,11 @@ The application allows managing comments through a simple web interface. Users c
 **Technologies Used**
 
 HTML
+
 CSS
+
 JavaScript
+
 Fetch API
 
 **Installation**
@@ -123,12 +134,17 @@ Delete: Sends a DELETE request to the API to remove a specific comment and clear
 **Project Structure**
 
 buscador-libros/
+
 ├── index.html
+
 ├── styles.css
+
 └── script.js
 
 index.html: Contains the HTML structure of the application.
+
 styles.css: Contains the CSS styles for the application's appearance.
+
 script.js: Contains the JavaScript code for CRUD functions and API interaction.
 
 **Sample API**
