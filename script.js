@@ -1,40 +1,112 @@
-// Función asíncrona para consultar los datos del servidor
 async function consultar() {
-    // Obtén el valor del campo de búsqueda por ID
     let idBusqueda = document.getElementById('idBusqueda').value;
 
     try {
-        // Realiza una solicitud fetch a la API
-        const respuesta = await fetch('https://jsonplaceholder.typicode.com/posts/1/comments');
+        const respuesta = await fetch(`https://jsonplaceholder.typicode.com/comments/${idBusqueda}`);
         
-        // Verifica si la respuesta es correcta (status 200)
         if (!respuesta.ok) {
-            throw new Error('Error de red: ' + respuesta.status); // Lanza un error si la respuesta no es correcta
+            throw new Error('Error de red: ' + respuesta.status);
         }
         
-        // Convierte la respuesta en formato JSON
         const datos = await respuesta.json();
-        console.log('Datos recibidos:', datos); // Muestra los datos recibidos en la consola
+        console.log('Datos recibidos:', datos);
 
-        // Busca el comentario cuyo ID coincide con el ID de búsqueda
-        let resultado = datos.find(comentario => comentario.id == idBusqueda);
+        document.getElementById('campo1').value = datos.postId;
+        document.getElementById('campo2').value = datos.id;
+        document.getElementById('campo3').value = datos.name;
+        document.getElementById('campo4').value = datos.email;
 
-        // Si se encuentra un resultado, llena los campos con la información correspondiente
-        if (resultado) {
-            document.getElementById('campo1').value = resultado.postId;
-            document.getElementById('campo2').value = resultado.id;
-            document.getElementById('campo3').value = resultado.name;
-            document.getElementById('campo4').value = resultado.email;
-        } else {
-            // Si no se encuentra un resultado, muestra una alerta y limpia los campos
-            alert('ID no encontrado');
-            document.getElementById('campo1').value = '';
-            document.getElementById('campo2').value = '';
-            document.getElementById('campo3').value = '';
-            document.getElementById('campo4').value = '';
-        }
     } catch (error) {
-        // Muestra el error en la consola
         console.log('Error:', error);
+        alert('ID no encontrado');
+    }
+}
+
+async function crear() {
+    let nuevoComentario = {
+        postId: document.getElementById('campo1').value,
+        name: document.getElementById('campo3').value,
+        email: document.getElementById('campo4').value,
+        body: 'Este es un comentario de prueba'
+    };
+
+    try {
+        const respuesta = await fetch('https://jsonplaceholder.typicode.com/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevoComentario)
+        });
+        
+        if (!respuesta.ok) {
+            throw new Error('Error de red: ' + respuesta.status);
+        }
+        
+        const datos = await respuesta.json();
+        console.log('Comentario creado:', datos);
+        alert('Libro creado con ID: ' + datos.id);
+
+    } catch (error) {
+        console.log('Error:', error);
+        alert('No se pudo crear el libro');
+    }
+}
+
+async function actualizar() {
+    let idBusqueda = document.getElementById('idBusqueda').value;
+    let comentarioActualizado = {
+        postId: document.getElementById('campo1').value,
+        id: document.getElementById('campo2').value,
+        name: document.getElementById('campo3').value,
+        email: document.getElementById('campo4').value,
+        body: 'Este libro se ha actualizado'
+    };
+
+    try {
+        const respuesta = await fetch(`https://jsonplaceholder.typicode.com/comments/${idBusqueda}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(comentarioActualizado)
+        });
+        
+        if (!respuesta.ok) {
+            throw new Error('Error de red: ' + respuesta.status);
+        }
+        
+        const datos = await respuesta.json();
+        console.log('Comentario actualizado:', datos);
+        alert('Libro actualizado');
+
+    } catch (error) {
+        console.log('Error:', error);
+        alert('No se pudo actualizar el libro');
+    }
+}
+
+async function eliminar() {
+    let idBusqueda = document.getElementById('idBusqueda').value;
+
+    try {
+        const respuesta = await fetch(`https://jsonplaceholder.typicode.com/comments/${idBusqueda}`, {
+            method: 'DELETE'
+        });
+        
+        if (!respuesta.ok) {
+            throw new Error('Error de red: ' + respuesta.status);
+        }
+        
+        console.log('Libro eliminado');
+        alert('Libro eliminado');
+        document.getElementById('campo1').value = '';
+        document.getElementById('campo2').value = '';
+        document.getElementById('campo3').value = '';
+        document.getElementById('campo4').value = '';
+
+    } catch (error) {
+        console.log('Error:', error);
+        alert('No se pudo eliminar el libro');
     }
 }
